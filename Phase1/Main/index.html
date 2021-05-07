@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vaccine Undo</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="main">
+
+        <div class="container">
+            <div class="booking-content">
+                <div class="booking-image">
+                    <img class="booking-img" src="images/homebg.jpeg" alt="Booking Image">
+                </div>
+                <div class="booking-form">
+                    <form id="booking-form" action="/submit" method="POST">
+                        <h2>We'll send you an email once the vaccine is available.</h2>
+                        <div class="form-group form-input">
+                            <input type="text" name="mail" id="name" value="" required/>
+                            <label for="name" class="form-label">Email</label>
+                        </div>
+                        <!-- <div class="form-group form-input">
+                            <input type="number" name="phone" id="phone" value="" required />
+                            <label for="phone" class="form-label">Your phone number</label>
+                        </div> -->
+                        
+                        <div class="form-group">
+                            <div class="select-list">
+                                <select name="code" id="time" required>
+                                    <option value="">District</option>
+                                    <option value="301">Alappuzha</option>
+                                    <option value="307">Ernakulam</option>
+                                    <option value="306">Idukki</option>
+                                    <option value="297">Kannur</option>
+                                    <option value="295">Kasaragod</option>
+                                    <option value="298">Kollam</option>
+                                    <option value="304">Kottayam</option>
+                                    <option value="305">Kozhikode</option>
+                                    <option value="302">Malappuram</option>
+                                    <option value="308">Palakkad</option>
+                                    <option value="300">Pathanamthitta</option>
+                                    <option value="296">Thiruvananthapuram</option>
+                                    <option value="303">Thrissur</option>
+                                    <option value="299">Wayanad</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="select-list">
+                                <select name="age" id="food" required>
+                                    <option value="">Age Group</option>
+                                    <option value="18">18+</option>
+                                    <option value="45">45+</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- <div class="form-radio">
+                            <label class="label-radio"> Select Your Age Group</label>
+                            <div class="radio-item-list">
+                                <span class="radio-item">
+                                    <input type="radio" name="number_people" value="2" id="number_people_2" />
+                                    <label for="number_people_2">18+</label>
+                                </span>
+                                <span class="radio-item active">
+                                    <input type="radio" name="number_people" value="4" id="number_people_4" checked="checked" />
+                                    <label for="number_people_4">45+</label>
+                                </span>
+                                <span class="radio-item">
+                                    <input type="radio" name="number_people" value="6" id="number_people_6" />
+                                    <label for="number_people_6">6</label>
+                                </span>
+                                <span class="radio-item">
+                                    <input type="radio" name="number_people" value="8" id="number_people_8" />
+                                    <label for="number_people_8">8</label>
+                                </span>
+                                <span class="radio-item">
+                                    <input type="radio" name="number_people" value="10" id="number_people_10" />
+                                    <label for="number_people_10">10</label>
+                                </span>
+                            </div>
+                        </div> -->
+
+                        <div class="form-submit">
+                            <input type="submit" value="Subscribe" class="submit" id="submit" name="submit" />
+                            <a href="https://mail.google.com/" class="vertify-booking">Verify your booking info from your email</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

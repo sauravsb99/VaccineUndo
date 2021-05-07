@@ -22,19 +22,20 @@
                     <img class="booking-img" src="images/homebg.jpeg" alt="Booking Image">
                 </div>
                 <div class="booking-form">
-                    <form id="booking-form">
+                    <form id="booking-form" method="POST">
                         <h2>We'll send you an email once the vaccine is available.</h2>
                         <div class="form-group form-input">
-                            <input type="text" name="name" id="name" value="" required/>
+                            <input type="text" name="mail" id="mail" value="" required/>
                             <label for="name" class="form-label">Email</label>
                         </div>
                         <div class="form-group form-input">
                             <input type="number" name="phone" id="phone" value="" required />
                             <label for="phone" class="form-label">Your phone number</label>
                         </div>
+                        
                         <div class="form-group">
                             <div class="select-list">
-                                <select name="time" id="time" required>
+                                <select name="code" id="code" required>
                                     <option value="">District</option>
                                     <option value="301">Alappuzha</option>
                                     <option value="307">Ernakulam</option>
@@ -55,7 +56,7 @@
                         </div>
                         <div class="form-group">
                             <div class="select-list">
-                                <select name="food" id="food" required>
+                                <select name="age" id="age" required>
                                     <option value="">Age Group</option>
                                     <option value="18">18+</option>
                                     <option value="45">45+</option>
@@ -90,7 +91,7 @@
 
                         <div class="form-submit">
                             <input type="submit" value="Subscribe" class="submit" id="submit" name="submit" />
-                            <a href="#" class="vertify-booking">Verify your booking info from your email</a>
+                            <a href="https://mail.google.com/" class="vertify-booking">Verify your booking info from your email</a>
                         </div>
                     </form>
                 </div>
