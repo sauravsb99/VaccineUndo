@@ -23,14 +23,14 @@ mongoose.connect('mongodb+srv://vaccineundo:vaccineundo.com@cluster0.uo2id.mongo
 setInterval(function(){
 for(var i=295;i<309;i++){
     setTimeout(function () {
-        console.log('boo')
-      }, 1000)
+        // console.log('boo')
+      }, 12000)
     var today = new Date();
     for(var j=0;j<1;j++){
-    setTimeout(1000);
-    setTimeout(function () {
-        console.log('boo')
-      }, 1000)
+    // setTimeout(1000);
+    // setTimeout(function () {
+    //     // console.log('boo')
+    //   }, 12000)
     var tomorrow = new Date(today)
     tomorrow.setDate(tomorrow.getDate() + 1)
     var dd = String(tomorrow.getDate()).padStart(2, '0');
@@ -63,8 +63,8 @@ for(var i=295;i<309;i++){
     //    console.log(data1);
     // console.log(myKey);
     for(var myKey2 in data1){
-        if(data1[myKey2].available_capacity > 0){
-            console.log("ond");
+        if(data1[myKey2].available_capacity >= 0){
+            console.log(data.centers[myKey].district_name);
             Vaccine
                     .find({
                         code: data.centers[myKey].district_name 
@@ -79,7 +79,7 @@ for(var i=295;i<309;i++){
                                         mailOptions = {
                                             to: element.email,
                                             subject: "Vaccine Available in your area",
-                                            html: "Hello,<br> Please Click on the link to go to cowin.<br><a href=" + link + ">CoWin</a><br>"
+                                            html: "Hello,<br> Please Click on the link to book your slot.<br><a href=" + link + ">CoWin</a><br>"
                                         }
                                         console.log(mailOptions);
                                         smtpTransport.sendMail(mailOptions, function(error, response) {
@@ -146,8 +146,8 @@ for(var i=295;i<309;i++){
                     .catch(err => {
                         console.error(err)
                     })
-            console.log(data);
-            console.log(data.centers[myKey].district_name);
+            // console.log(data);
+            // console.log(data.centers[myKey].district_name);
             // console.log(myKey2);
         }
     }
@@ -168,7 +168,7 @@ for(var i=295;i<309;i++){
 
 
 }
-}, 60* 1000);
+}, 12* 1000);
 
 },
 err => { console.log("err", err); }
