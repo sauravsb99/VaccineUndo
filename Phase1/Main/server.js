@@ -7,8 +7,8 @@ var nodemailer = require("nodemailer");
 var smtpTransport = nodemailer.createTransport({
     service: "Gmail",
     auth: {
-        user: "email",
-        pass: "password"
+        user: "vaccineundo",
+        pass: "vaccine@undo.com"
     }
 });
 const vaccineSchema = mongoose.Schema({
