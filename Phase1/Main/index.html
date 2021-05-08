@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,12 @@
     <title>Vaccine Undo</title>
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="public/fonts/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/css/style.css">
 </head>
+
 <body>
 
     <div class="main">
@@ -19,7 +21,7 @@
         <div class="container">
             <div class="booking-content">
                 <div class="booking-image">
-                    <img class="booking-img" src="images/homebg.jpeg" alt="Booking Image">
+                    <img class="booking-img" src="public/images/homebg.jpeg" alt="Booking Image">
                 </div>
                 <div class="booking-form">
                     <form id="booking-form" action="/submit" method="POST">
@@ -32,25 +34,25 @@
                             <input type="number" name="phone" id="phone" value="" required />
                             <label for="phone" class="form-label">Your phone number</label>
                         </div> -->
-                        
+
                         <div class="form-group">
                             <div class="select-list">
                                 <select name="code" id="time" required>
                                     <option value="">District</option>
-                                    <option value="301">Alappuzha</option>
-                                    <option value="307">Ernakulam</option>
-                                    <option value="306">Idukki</option>
-                                    <option value="297">Kannur</option>
-                                    <option value="295">Kasaragod</option>
-                                    <option value="298">Kollam</option>
-                                    <option value="304">Kottayam</option>
-                                    <option value="305">Kozhikode</option>
-                                    <option value="302">Malappuram</option>
-                                    <option value="308">Palakkad</option>
-                                    <option value="300">Pathanamthitta</option>
-                                    <option value="296">Thiruvananthapuram</option>
-                                    <option value="303">Thrissur</option>
-                                    <option value="299">Wayanad</option>
+                                    <option value="Alappuzha">Alappuzha</option>
+                                    <option value="Ernakulam">Ernakulam</option>
+                                    <option value="Idukki">Idukki</option>
+                                    <option value="Kannur">Kannur</option>
+                                    <option value="Kasaragod">Kasaragod</option>
+                                    <option value="Kollam">Kollam</option>
+                                    <option value="Kottayam">Kottayam</option>
+                                    <option value="Kozhikode">Kozhikode</option>
+                                    <option value="Malappuram">Malappuram</option>
+                                    <option value="Palakkad">Palakkad</option>
+                                    <option value="Pathanamthitta">Pathanamthitta</option>
+                                    <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                                    <option value="Thrissur">Thrissur</option>
+                                    <option value="Wayanad">Wayanad</option>
                                 </select>
                             </div>
                         </div>
@@ -101,7 +103,9 @@
     </div>
 
     <!-- JS -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    <script src="public/vendor/jquery/jquery.min.js"></script>
+    <script src="public/js/main.js"></script>
+</body>
+<!-- This templates was made by Colorlib (https://colorlib.com) -->
+
 </html>
