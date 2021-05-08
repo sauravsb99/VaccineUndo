@@ -1,8 +1,11 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const expressLayouts = require('express-ejs-layouts')
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/public', express.static('public'));
+app.use(expressLayouts);
+app.set('view engine', 'ejs');
 var mongoose = require('mongoose');
 var nodemailer = require("nodemailer");
 var smtpTransport = nodemailer.createTransport({
@@ -29,7 +32,7 @@ mongoose.connect('mongodb+srv://vaccineundo:vaccineundo.com@cluster0.uo2id.mongo
         app.listen(3000, function() {});
 
         app.get('/', (req, res) => {
-            res.sendFile(__dirname + '/index.html');
+            res.render('index');
         });
         app.post('/submit', (req, res) => {
             var today = new Date();
@@ -43,7 +46,7 @@ mongoose.connect('mongodb+srv://vaccineundo:vaccineundo.com@cluster0.uo2id.mongo
 
             host = req.get('host');
             link = "http://" + req.get('host') + "/verify?id=" + rand + "&mail=" + req.body.mail;
-            unsubLink = "http://" + req.get('host') + "/unsubscribe?id=" + rand + "&mail=" + req.body.mail;
+            unsubLink = "http://" + req.get('host') + "/unsubscribe?mail=" + req.body.mail;
             mailOptions = {
                 to: req.body.mail,
                 subject: "Please confirm your Email account",
@@ -66,7 +69,7 @@ mongoose.connect('mongodb+srv://vaccineundo:vaccineundo.com@cluster0.uo2id.mongo
 
 
 
-
+            console.log(req.body);
             var awesome_instance = new Vaccine({ email: req.body.mail, age: req.body.age, code: req.body.code, flag: 0, date: today, hash: rand, isVerified: 0 });
 
             awesome_instance.save(function(err) {
@@ -90,10 +93,12 @@ mongoose.connect('mongodb+srv://vaccineundo:vaccineundo.com@cluster0.uo2id.mongo
                             doc.save();
 
                             console.log("email is verified");
-                            res.end("<h1>Email " + mailOptions.to + " is been Successfully verified");
+                            res.render('verified')
                         } else {
                             console.log("email is not verified");
-                            res.end("<h1>Bad Request</h1>");
+                            res.render('error', {
+                                errmsg: "Bad Request"
+                            });
                         }
                         // console.log()
 
@@ -129,14 +134,16 @@ mongoose.connect('mongodb+srv://vaccineundo:vaccineundo.com@cluster0.uo2id.mongo
                     })
                     .then(doc => {
                         console.log("unsubscribed");
-                        res.end("<h1>Unsubscribed</h1>");
+                        res.render('unsubscribed')
                     })
                     .catch(err => {
                         console.error(err)
-                        res.end("<h1>Bad Request</h1>");
+                        res.render('error', {
+                            errmsg: "Bad Request"
+                        });
                     })
             } else {
-                res.end("<h1>Request is from unknown source");
+                res.render('error', { errmsg: "Request is from unknown source" });
             }
         });
     },
