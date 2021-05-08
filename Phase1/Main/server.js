@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use('/public', express.static('public'));
 var mongoose = require('mongoose');
 var nodemailer = require("nodemailer");
 var smtpTransport = nodemailer.createTransport({
