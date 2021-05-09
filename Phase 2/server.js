@@ -63,8 +63,8 @@ for(var i=295;i<309;i++){
     //    console.log(data1);
     // console.log(myKey);
     for(var myKey2 in data1){
-        if(data1[myKey2].available_capacity >= 0){
-            console.log(data.centers[myKey].district_name);
+        if(data1[myKey2].available_capacity > 0){
+            // console.log(data.centers[myKey].district_name);
             Vaccine
                     .find({
                         code: data.centers[myKey].district_name 
@@ -146,7 +146,7 @@ for(var i=295;i<309;i++){
                     .catch(err => {
                         console.error(err)
                     })
-            // console.log(data);
+            console.log(data);
             // console.log(data.centers[myKey].district_name);
             // console.log(myKey2);
         }
@@ -168,7 +168,7 @@ for(var i=295;i<309;i++){
 
 
 }
-}, 12* 1000);
+}, 20* 1000);
 
 },
 err => { console.log("err", err); }
