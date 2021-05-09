@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const expressLayouts = require('express-ejs-layouts')
 const app = express()
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/public', express.static('public'));
 app.use(expressLayouts);
@@ -35,6 +36,7 @@ mongoose.connect('mongodb+srv://vaccineundo:vaccineundo.com@cluster0.uo2id.mongo
             res.render('index');
         });
         app.post('/submit', (req, res) => {
+            console.log("SS", req);
             var today = new Date();
             var dd = String(today.getDate()).padStart(2, '0');
             var mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -75,7 +77,9 @@ mongoose.connect('mongodb+srv://vaccineundo:vaccineundo.com@cluster0.uo2id.mongo
             awesome_instance.save(function(err) {
                 if (err) return handleError(err);
             });
-            res.redirect('/');
+            return res.json({
+                success: true
+            });
         });
         app.get('/verify', function(req, res) {
             console.log(req.protocol + ":/" + req.get('host'));

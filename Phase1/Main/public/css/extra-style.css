@@ -11,9 +11,23 @@
     top: 35%;
     left: 35%;
     padding: 10px;
+    border-radius: 5px;
     text-align: center;
     background-color: white;
     color: black;
+}
+
+#popup {
+    display: none;
+}
+
+.popup-encloser {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .popup h2 {
@@ -21,10 +35,17 @@
 }
 
 .popup button {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
     margin-top: 10px;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
-    background-color: maroon;
+    background-color: orange;
     color: white;
+}
+
+.popup button:hover {
+    cursor: pointer;
 }
