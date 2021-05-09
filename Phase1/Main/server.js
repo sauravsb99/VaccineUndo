@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+
 const expressLayouts = require('express-ejs-layouts')
 const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -8,13 +9,15 @@ app.use(expressLayouts);
 app.set('view engine', 'ejs');
 var mongoose = require('mongoose');
 var nodemailer = require("nodemailer");
-var smtpTransport = nodemailer.createTransport({
-    service: "Gmail",
+const smtpTransport = require('nodemailer-smtp-transport');
+let transporter = nodemailer.createTransport(smtpTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
     auth: {
         user: "vaccineundo",
         pass: "vaccine@undo.com"
     }
-});
+}));
 const vaccineSchema = mongoose.Schema({
     email: String,
     age: String,
@@ -53,14 +56,11 @@ mongoose.connect('mongodb+srv://vaccineundo:vaccineundo.com@cluster0.uo2id.mongo
                 html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a><br><p>If you don't want to receive emails from us anymore, you can <a href=" + unsubLink + ">unsubscribe</a></p>"
             }
             console.log(mailOptions);
-            smtpTransport.sendMail(mailOptions, function(error, response) {
-                if (error) {
-                    console.log(error);
-                    res.end("error");
-                } else {
-                    console.log("Message sent: " + response.message);
-                    res.end("sent");
-                }
+            transporter.sendMail(mailOptions, function(err, info) {
+                if (err)
+                    console.log(err);
+                else
+                    console.log('Email sent: ' + info.response);
             });
 
 
