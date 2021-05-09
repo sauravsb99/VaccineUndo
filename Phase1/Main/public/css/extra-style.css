@@ -3,3 +3,28 @@
     margin: 0 auto;
     padding: 10px;
 }
+
+.popup {
+    width: 25%;
+    height: 200px;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+    color: black;
+}
+
+.popup h2 {
+    color: black;
+}
+
+.popup button {
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: maroon;
+    color: white;
+}
