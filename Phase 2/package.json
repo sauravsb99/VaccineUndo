@@ -1,0 +1,16 @@
+{
+  "name": "phase-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.12.7",
+    "nodemailer": "^6.6.0",
+    "nodemon": "^2.0.7"
+  }
+}
