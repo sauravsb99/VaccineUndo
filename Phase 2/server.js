@@ -1,13 +1,15 @@
 const https = require('https');
 var mongoose = require('mongoose');
 var nodemailer = require("nodemailer");
-var smtpTransport = nodemailer.createTransport({
-    service: "Gmail",
+const smtpTransport = require('nodemailer-smtp-transport');
+let transporter = nodemailer.createTransport(smtpTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
     auth: {
         user: "vaccineundo",
         pass: "vaccine@undo.com"
     }
-});
+}));
 const vaccineSchema = mongoose.Schema({
     email: String,
     age: String,
@@ -20,11 +22,12 @@ const vaccineSchema = mongoose.Schema({
 var Vaccine = mongoose.model('Vaccine', vaccineSchema);
 mongoose.connect('mongodb+srv://vaccineundo:vaccineundo.com@cluster0.uo2id.mongodb.net/myFirstDatabase?retryWrites=true&w=majority').then(
     () => {
-setInterval(function(){
+
+// setInterval(function(){
 for(var i=295;i<309;i++){
-    setTimeout(function () {
-        // console.log('boo')
-      }, 12000)
+    // setTimeout(function () {
+    //     // console.log('boo')
+    //   }, 12000)
     var today = new Date();
     for(var j=0;j<1;j++){
     // setTimeout(1000);
@@ -41,7 +44,7 @@ for(var i=295;i<309;i++){
 
     var url = `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=${i}&date=${output}`;
 
-    https.get(url, function(res){
+    https.get(url,(function(i) {return function(res){
         var body = '';
     
         res.on('data', function(chunk){
@@ -60,11 +63,16 @@ for(var i=295;i<309;i++){
     for(var myKey in data.centers) 
     {
        var data1 = data.centers[myKey].sessions;
-    //    console.log(data1);
+       console.log(i);
     // console.log(myKey);
     for(var myKey2 in data1){
-        if(data1[myKey2].available_capacity >= 0){
-            console.log(data.centers[myKey].district_name);
+        // console.log(data1[myKey2].available_capacity);
+        // console.log(data.centers[myKey].district_name);
+        // console.log(data.centers[myKey].name);
+        // console.log(output);
+        // console.log(data1[myKey2].min_age_limit);
+        if(data1[myKey2].available_capacity > 0){
+            // console.log(data.centers[myKey].district_name);
             Vaccine
                     .find({
                         code: data.centers[myKey].district_name 
@@ -79,17 +87,14 @@ for(var i=295;i<309;i++){
                                         mailOptions = {
                                             to: element.email,
                                             subject: "Vaccine Available in your area",
-                                            html: "Hello,<br> Please Click on the link to book your slot.<br><a href=" + link + ">CoWin</a><br>"
+                                            html: "Hello,<br>Vaccines are available in <br>"+data.centers[myKey].name+"<br>Date"+output+"<br>"+"Please Click on the link to book your slot.<br><a href=" + link + ">CoWin</a><br>"
                                         }
                                         console.log(mailOptions);
-                                        smtpTransport.sendMail(mailOptions, function(error, response) {
-                                            if (error) {
-                                                console.log(error);
-                                                res.end("error");
-                                            } else {
-                                                console.log("Message sent: " + response.message);
-                                                res.end("sent");
-                                            }
+                                        transporter.sendMail(mailOptions, function(err, info) {
+                                            if (err)
+                                                console.log(err);
+                                            else
+                                                console.log('Email sent: ' + info.response);
                                         });
                                     }
                                     element.flag=true;
@@ -116,14 +121,11 @@ for(var i=295;i<309;i++){
                                                 html: "Hello,<br> Please Click on the link to go to cowin.<br><a href=" + link + ">CoWin</a><br>"
                                             }
                                             console.log(mailOptions);
-                                            smtpTransport.sendMail(mailOptions, function(error, response) {
-                                                if (error) {
-                                                    console.log(error);
-                                                    res.end("error");
-                                                } else {
-                                                    console.log("Message sent: " + response.message);
-                                                    res.end("sent");
-                                                }
+                                            transporter.sendMail(mailOptions, function(err, info) {
+                                                if (err)
+                                                    console.log(err);
+                                                else
+                                                    console.log('Email sent: ' + info.response);
                                             });
                                         }
                                         element.flag=true;
@@ -156,19 +158,21 @@ for(var i=295;i<309;i++){
             // var data1 = JSON.parse(data.centers);
             // console.log(data1);
         });
-    }).on('error', function(e){
+    }.on('error', function(e){
           console.log("Got an error: ", e);
     });
+}(i)));
 
 
-}
+
+}//j
     
 
 
 
 
 }
-}, 12* 1000);
+// }, 300* 1000);
 
 },
 err => { console.log("err", err); }
