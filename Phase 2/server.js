@@ -1,13 +1,15 @@
 const https = require('https');
 var mongoose = require('mongoose');
 var nodemailer = require("nodemailer");
-var smtpTransport = nodemailer.createTransport({
-    service: "Gmail",
+const smtpTransport = require('nodemailer-smtp-transport');
+let transporter = nodemailer.createTransport(smtpTransport({
+    service: 'gmail',
+    host: 'smtp.gmail.com',
     auth: {
         user: "vaccineundo",
         pass: "vaccine@undo.com"
     }
-});
+}));
 const vaccineSchema = mongoose.Schema({
     email: String,
     age: String,
@@ -82,14 +84,11 @@ for(var i=295;i<309;i++){
                                             html: "Hello,<br> Please Click on the link to book your slot.<br><a href=" + link + ">CoWin</a><br>"
                                         }
                                         console.log(mailOptions);
-                                        smtpTransport.sendMail(mailOptions, function(error, response) {
-                                            if (error) {
-                                                console.log(error);
-                                                res.end("error");
-                                            } else {
-                                                console.log("Message sent: " + response.message);
-                                                res.end("sent");
-                                            }
+                                        transporter.sendMail(mailOptions, function(err, info) {
+                                            if (err)
+                                                console.log(err);
+                                            else
+                                                console.log('Email sent: ' + info.response);
                                         });
                                     }
                                     element.flag=true;
