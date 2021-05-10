@@ -49,3 +49,7 @@
 .popup button:hover {
     cursor: pointer;
 }
+
+select:hover option {
+    color: black;
+}
