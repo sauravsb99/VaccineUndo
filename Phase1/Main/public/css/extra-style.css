@@ -1,3 +1,24 @@
+@font-face {
+    font-family: 'Manjari-Bold';
+    font-style: bold;
+    font-weight: 900;
+    src: url("../fonts/Manjari/Manjari-Bold.ttf");
+}
+
+@font-face {
+    font-family: 'Manjari-Regular';
+    font-style: normal;
+    font-weight: 600;
+    src: url("../fonts/Manjari/Manjari-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'Manjari-Thin';
+    font-style: normal;
+    font-weight: 100;
+    src: url("../fonts/Manjari/Manjari-Thin.ttf");
+}
+
 .notification {
     color: black;
     margin: 0 auto;
@@ -52,4 +73,34 @@
 
 select:hover option {
     color: black;
+}
+
+header span {
+    font-size: 40px;
+    font-weight: 100;
+    padding-top: 5px;
+    font-family: Manjari;
+    color: black;
+}
+
+#header-undo {
+    font-family: Manjari;
+    font-weight: 900;
+}
+
+header {
+    height: 72px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: 0 auto;
+    padding-left: 25px;
+    width: 900px;
+}
+
+@media screen and (max-width: 1200px) {
+    header {
+        width: calc(100vw - 25px);
+    }
 }
