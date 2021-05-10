@@ -1,0 +1,11 @@
+---
+application:
+  name: "vaccineundo"
+  project: "vaccineundoserver"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-vaccineundo"
+  routes:
+  - application_name: "vaccineundo"
+    paths:
+    - "/*"
