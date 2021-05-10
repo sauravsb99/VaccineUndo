@@ -27,7 +27,7 @@
 
 .popup {
     width: 25%;
-    height: 200px;
+    height: 250px;
     position: absolute;
     top: 35%;
     left: 35%;
@@ -39,7 +39,7 @@
 }
 
 #popup {
-    display: none;
+    /* display: none; */
 }
 
 .popup-encloser {
@@ -102,5 +102,14 @@ header {
 @media screen and (max-width: 1200px) {
     header {
         width: calc(100vw - 25px);
+    }
+    #popup {
+        z-index: 1;
+    }
+    .popup {
+        top: 25%;
+        left: 7vw;
+        right: 8vw;
+        width: 80vw;
     }
 }
