@@ -36,7 +36,7 @@ mongoose.connect('mongodb+srv://vaccineundo:vaccineundo.com@cluster0.uo2id.mongo
         app.listen(3000, function() {});
 
         app.get('/', (req, res) => {
-            res.render('index');
+            res.render('index', { about: false });
         });
         app.post('/submit', (req, res) => {
             console.log("SS", req);
@@ -80,6 +80,9 @@ mongoose.connect('mongodb+srv://vaccineundo:vaccineundo.com@cluster0.uo2id.mongo
             return res.json({
                 success: true
             });
+        });
+        app.get('/about', function(req, res) {
+            res.render('about', { about: true });
         });
         app.get('/verify', function(req, res) {
             console.log(req.protocol + ":/" + req.get('host'));
