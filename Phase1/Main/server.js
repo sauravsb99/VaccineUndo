@@ -100,11 +100,12 @@ mongoose.connect('mongodb+srv://vaccineundo:vaccineundo.com@cluster0.uo2id.mongo
                             doc.save();
 
                             console.log("email is verified");
-                            res.render('verified')
+                            res.render('verified', { about: false })
                         } else {
                             console.log("email is not verified");
                             res.render('error', {
-                                errmsg: "Bad Request"
+                                errmsg: "Bad Request",
+                                about: false
                             });
                         }
                         // console.log()
@@ -141,16 +142,17 @@ mongoose.connect('mongodb+srv://vaccineundo:vaccineundo.com@cluster0.uo2id.mongo
                     })
                     .then(doc => {
                         console.log("unsubscribed");
-                        res.render('unsubscribed')
+                        res.render('unsubscribed', { about: false })
                     })
                     .catch(err => {
                         console.error(err)
                         res.render('error', {
-                            errmsg: "Bad Request"
+                            errmsg: "Bad Request",
+                            about: false
                         });
                     })
             } else {
-                res.render('error', { errmsg: "Request is from unknown source" });
+                res.render('error', { errmsg: "Request is from unknown source", about: false });
             }
         });
     },
