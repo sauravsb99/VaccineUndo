@@ -2,7 +2,7 @@
     <img class="booking-img" src="public/images/homebg.jpeg" alt="Booking Image">
 </div>
 <div class="booking-form">
-    <form id="booking-form">
+    <form id="booking-form login-form">
         <h2>We'll send you an email once the vaccine is available.</h2>
         <!-- <div class="form-group form-input">
             <input type="text" name="mail" id="email-input" value="" required/>
@@ -43,21 +43,12 @@
                 </select>
             </div>
         </div> -->
-        <body>
-            <div class="container login-container">
-                <div class="card" style="margin-top:100px;">
-                    <div class="card-content">
-                        <div class="section" style="text-align: center;">
-                            <a href="/auth/google" class="btn red darken-1">
-                                <i class="fab fa-google left"></i> Log In With Google
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>  
-        
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        </body>
+        <div class="login-container">
+            <a href="/auth/google" class="btn-google">
+                <img class="icon" src="public/images/google-brands.svg">
+                <p>LOG IN WITH GOOGLE</p>
+            </a>
+        </div>
         <!-- <div class="form-radio">
             <label class="label-radio"> Select Your Age Group</label>
             <div class="radio-item-list">
@@ -97,5 +88,3 @@
         <button id="popup-close" onclick="togglePopup()">close</button>
     </div>
 </div> -->
-
-
