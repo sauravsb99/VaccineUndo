@@ -10,6 +10,7 @@ function togglePopup() {
     else
         popup.style.display = 'block';
     form.reset();
+    // axios.get('/');
 }
 
 form.addEventListener("submit", (e) => {

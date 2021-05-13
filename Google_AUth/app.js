@@ -62,7 +62,7 @@ app.post('/submit', (req, res) => {
             var yyyy = today.getFullYear();
             today = dd + '-' + mm + '-' + yyyy;
     User
-    .findOne({email: req.body.mail})
+    .findOne({email: req.body.mail,age: "code"})
     .then(doc => {
       doc.age = req.body.age;
       doc.code = req.body.code;
