@@ -5,11 +5,11 @@ let district = document.getElementById('district-input');
 let age = document.getElementById('age-input');
 
 function togglePopup() {
-    if (popup.style.display == 'block')
+    if (popup.style.display == 'block') {
         popup.style.display = 'none';
-    else
+    } else
         popup.style.display = 'block';
-    form.reset();
+    // form.reset();
 }
 
 form.addEventListener("submit", (e) => {

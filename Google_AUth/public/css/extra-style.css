@@ -26,8 +26,8 @@
 }
 
 .popup {
-    width: 25%;
-    height: 250px;
+    width: 28%;
+    height: 200px;
     position: absolute;
     top: 35%;
     left: 35%;
@@ -53,6 +53,10 @@
 
 .popup h2 {
     color: black;
+}
+
+.popup p {
+    padding: 10px;
 }
 
 .popup button {
