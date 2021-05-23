@@ -153,3 +153,8 @@ footer a:hover {
 #about div {
     margin: 10px;
 }
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
