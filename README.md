@@ -1,9 +1,7 @@
 # VaccineUndo
-ASAP
-https://apisetu.gov.in/public/marketplace/api/cowin
+Vaccineundo uses cowin public api to help notify users whenever there is a vaccine slot near their area.
+https://apisetu.gov.in/api/cowin
 
-A Node.js web app using cowin public api and AWS which sends email notification whenever vaccine slots are available.
+The app is used by 4000+ people.
 
-The app is currently used by 2000+ people.
-
-Website hosted at   https://www.vaccineundo.in/
+Website hosted at   https://www.vaccineundo.in/ (discontinued)
